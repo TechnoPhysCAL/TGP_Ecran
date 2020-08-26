@@ -1,79 +1,49 @@
 #include "Ecran.h"
 
-Ecran::Ecran() : adafruit(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
+Ecran::Ecran() : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
 {
-}
-
-Adafruit_SSD1306 Ecran::getAdafruit()
-{
-  return adafruit;
 }
 
 void Ecran::begin()
 {
-  if (!initializeScreen())
+  if (!Adafruit_SSD1306::begin(SSD1306_SWITCHCAPVCC, DEFAULT_ADDRESS))
   {
     Serial.println(F("SSD1306 allocation failed"));
   }
   else
   {
-    adafruit.display();
+    display();
     delay(2000); // Pause for 2 seconds
 
     // Clear the buffer
-    adafruit.clearDisplay();
-    adafruit.display();
+    clearDisplay();
+    display();
   }
 }
-void Ecran::printSmall(char *msg)
+void Ecran::ecrire(char *msg, int textSize)
 {
-  setFont(FONT_SMALL);
+  setTextSize(textSize);
   writeFromBeginning(msg);
 }
-void Ecran::printMedium(char *msg)
+
+void Ecran::dessinerPixel(int16_t x, int16_t y)
 {
-  setFont(FONT_MEDIUM);
-   writeFromBeginning(msg);
-}
-void Ecran::printLarge(char *msg)
-{
-  setFont(FONT_LARGE);
-  writeFromBeginning(msg);
-}
-/*void Ecran::showSplashScreen()
-{
-  //printMedium("ProtoTPhys\n   2V1\n  09-2020\n   CAL");
-}*/
-void Ecran::clear()
-{
-  adafruit.clearDisplay();
+  drawPixel(x, y, SSD1306_WHITE);
+  display();
 }
 
-int16_t Ecran::width()
+void Ecran::effacer()
 {
-  return adafruit.width();
-}
-int16_t Ecran::height()
-{
-  return adafruit.height();
-}
-
-bool Ecran::initializeScreen()
-{
-  return adafruit.begin(SSD1306_SWITCHCAPVCC, DEFAULT_ADDRESS); // initialize with the I2C addr, et reset
-}
-
-void Ecran::setFont(int value)
-{
-  adafruit.setTextSize(value);
+  clearDisplay();
+  display();
 }
 
 void Ecran::writeFromBeginning(char *msg)
 {
   String buffer = msg;
-  adafruit.setTextColor(WHITE);
-  //adafruit.setCursor(0, 0);
-  adafruit.print(buffer);
-  //adafruit.display();
-  adafruit.display();
+  clearDisplay();
+  setTextColor(WHITE);
+  setCursor(0, 0);
+  print(buffer);
+  display();
 }

@@ -4,8 +4,7 @@
 #include "Arduino.h"
 #include "Adafruit_SSD1306.h" //Pour l'affichage OLED
 #include <SPI.h>
-#include <Wire.h>             //Pour l'affichage OLED
-
+#include <Wire.h> //Pour l'affichage OLED
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -13,40 +12,22 @@
 
 #define DEFAULT_ADDRESS 0x3C
 
-
-#define FONT_SMALL 1
-#define FONT_MEDIUM 2
-#define FONT_LARGE 3
-#define FONT_XLARGE 4
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class Ecran
+class Ecran : public Adafruit_SSD1306
 {
 public:
     Ecran();
 
     //Design oriented
     void begin();
-    void clear();
-    //void showSplashScreen();
-    void printSmall(char *str);
-    void printMedium(char *str);
-    void printLarge(char *str);
-    int16_t width();
-    int16_t height();
 
-    //Hardware oriented
-    bool initializeScreen();
-    void setFont(int);
-    void writeFromBeginning(char *str);
-
-    Adafruit_SSD1306 getAdafruit();
+    void ecrire(char *str, int textSize = 1);
+    void dessinerPixel(int16_t, int16_t);
+    void effacer();
 
 private:
-    Adafruit_SSD1306 adafruit;
-   
-    //String _buffer;
+    void writeFromBeginning(char *str);
 };
 #endif
-
