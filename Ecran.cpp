@@ -2,6 +2,7 @@
 
 Ecran::Ecran() : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
 {
+  _splashVisible = false;
 }
 
 void Ecran::begin()
