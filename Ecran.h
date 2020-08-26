@@ -21,6 +21,8 @@ public:
     Ecran();
 
     //Design oriented
+    void setSplashVisible(bool);
+    bool getSplashVisible();
     void begin();
 
     void ecrire(char *str, int textSize = 1);
@@ -28,6 +30,7 @@ public:
     void effacer();
 
 private:
+    bool _splashVisible;
     void writeFromBeginning(char *str);
 };
 #endif

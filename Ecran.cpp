@@ -12,13 +12,24 @@ void Ecran::begin()
   }
   else
   {
-    display();
-    delay(2000); // Pause for 2 seconds
-
+    if (getSplashVisible())
+    {
+      display();
+      delay(2000); // Pause for 2 seconds
+    }
     // Clear the buffer
     clearDisplay();
     display();
   }
+}
+
+void Ecran::setSplashVisible(bool value)
+{
+  _splashVisible = value;
+}
+bool Ecran::getSplashVisible()
+{
+  return _splashVisible;
 }
 void Ecran::ecrire(char *msg, int textSize)
 {
