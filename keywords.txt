@@ -10,9 +10,12 @@ Ecran   KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
+begin	KEYWORD2
 ecrire	KEYWORD2
 dessinerPixel	KEYWORD2
 effacer	KEYWORD2
+setSplashVisible	KEYWORD2
+getSplashVisible	KEYWORD2
 
 ######################################
 # Constants (LITERAL1)

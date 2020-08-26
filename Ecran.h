@@ -19,11 +19,10 @@ class Ecran : public Adafruit_SSD1306
 {
 public:
     Ecran();
+    void begin();
 
-    //Design oriented
     void setSplashVisible(bool);
     bool getSplashVisible();
-    void begin();
 
     void ecrire(char *str, int textSize = 1);
     void dessinerPixel(int16_t, int16_t);
