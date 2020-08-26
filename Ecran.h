@@ -16,7 +16,8 @@
 
 #define FONT_SMALL 1
 #define FONT_MEDIUM 2
-#define FONT_LARGE 4
+#define FONT_LARGE 3
+#define FONT_XLARGE 4
 /******************************************************************************
 * Definitions
 ******************************************************************************/
@@ -37,8 +38,8 @@ public:
 
     //Hardware oriented
     bool initializeScreen();
-    //void setFont(int);
-    //void writeFromBeginning(char *str);
+    void setFont(int);
+    void writeFromBeginning(char *str);
 
     Adafruit_SSD1306 getAdafruit();
 

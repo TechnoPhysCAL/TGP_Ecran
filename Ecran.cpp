@@ -27,18 +27,18 @@ void Ecran::begin()
 }
 void Ecran::printSmall(char *msg)
 {
- // setFont(FONT_SMALL);
- // writeFromBeginning(msg);
+  setFont(FONT_SMALL);
+  writeFromBeginning(msg);
 }
 void Ecran::printMedium(char *msg)
 {
- // setFont(FONT_MEDIUM);
- // writeFromBeginning(msg);
+  setFont(FONT_MEDIUM);
+   writeFromBeginning(msg);
 }
 void Ecran::printLarge(char *msg)
 {
- // setFont(FONT_LARGE);
-  //writeFromBeginning(msg);
+  setFont(FONT_LARGE);
+  writeFromBeginning(msg);
 }
 /*void Ecran::showSplashScreen()
 {
@@ -62,7 +62,7 @@ bool Ecran::initializeScreen()
 {
   return adafruit.begin(SSD1306_SWITCHCAPVCC, DEFAULT_ADDRESS); // initialize with the I2C addr, et reset
 }
-/*
+
 void Ecran::setFont(int value)
 {
   adafruit.setTextSize(value);
@@ -75,5 +75,5 @@ void Ecran::writeFromBeginning(char *msg)
   //adafruit.setCursor(0, 0);
   adafruit.print(buffer);
   //adafruit.display();
-  Serial.println(buffer);
-}*/
+  adafruit.display();
+}
