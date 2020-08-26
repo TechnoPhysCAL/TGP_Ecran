@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map for Clavier
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ProtoTGP	KEYWORD1
+Ecran   KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+refresh	KEYWORD2
+gauche	KEYWORD2
+droite	KEYWORD2
+haut	KEYWORD2
+bas	KEYWORD2
+selection	KEYWORD2
+delRouge	KEYWORD2
+delVerte	KEYWORD2
+ecran	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
