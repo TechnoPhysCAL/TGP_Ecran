@@ -20,6 +20,7 @@ class Ecran : public Adafruit_SSD1306
 public:
     Ecran();
     void begin();
+    void refresh();
 
     void setSplashVisible(bool);
     bool getSplashVisible();
@@ -28,8 +29,13 @@ public:
     void dessinerPixel(int16_t, int16_t);
     void effacer();
 
+    //Méthode surchargé provenant de la classe Adafruit GFX, pour flagger le changement d'image.
+    void endWrite();
+
 private:
     bool _splashVisible;
+    bool _changeFlag;
+    void flag();
     void writeFromBeginning(char *str);
 };
 #endif

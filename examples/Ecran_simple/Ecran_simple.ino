@@ -19,19 +19,26 @@ void setup()
 
 void loop()
 {
+    monEcran.refresh();
+
     monEcran.ecrire("Bonjour!"); //Écrire un texte dans l'écran.
+    monEcran.display();
     delay(1000);
 
     monEcran.ecrire("Comment allez-vous?", 2); //Écrire un texte dans l'écran, avec une taille de texte de 2.
+    monEcran.display();
     delay(1000);
 
     monEcran.ecrire("Moi,\n bien.", 3); //Écrire un texte dans l'écran, avec une taille de texte de 3.
+    monEcran.display();
     delay(1000);
 
     monEcran.effacer(); //Effacer tout l'écran
+    monEcran.display();
     delay(2000);
 
     monEcran.ecrire(" BOU!", 4); //Écrire un texte dans l'écran, avec une taille de texte de 4.
+    monEcran.display();
     delay(1000);
 
     for (int i = 0; i < 500; i++) //Boucle de 500 itérations:
@@ -40,5 +47,6 @@ void loop()
         int y = random(monEcran.height()); //Générer une valeur aléatoire située entre 0 et la hauteur de l'écran.
 
         monEcran.dessinerPixel(x, y); //Afficher un pixel blanc à la coordonnée (x,y).
+        monEcran.display();
     }
 }

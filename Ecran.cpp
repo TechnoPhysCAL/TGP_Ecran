@@ -3,6 +3,7 @@
 Ecran::Ecran() : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
 {
   _splashVisible = false;
+  _changeFlag = false;
 }
 
 void Ecran::begin()
@@ -24,6 +25,15 @@ void Ecran::begin()
   }
 }
 
+void Ecran::refresh()
+{
+  if (_changeFlag)
+  {
+    _changeFlag = false;
+    display();
+  }
+}
+
 void Ecran::setSplashVisible(bool value)
 {
   _splashVisible = value;
@@ -41,13 +51,13 @@ void Ecran::ecrire(char *msg, int textSize)
 void Ecran::dessinerPixel(int16_t x, int16_t y)
 {
   drawPixel(x, y, SSD1306_WHITE);
-  display();
+  flag();
 }
 
 void Ecran::effacer()
 {
   clearDisplay();
-  display();
+  flag();
 }
 
 void Ecran::writeFromBeginning(char *msg)
@@ -57,5 +67,17 @@ void Ecran::writeFromBeginning(char *msg)
   setTextColor(WHITE);
   setCursor(0, 0);
   print(buffer);
-  display();
+  flag();
+}
+
+void Ecran::flag()
+{
+  _changeFlag = true;
+}
+
+//Overriden method
+void Ecran::endWrite()
+{
+  Adafruit_SSD1306::endWrite();
+  _changeFlag = true;
 }
