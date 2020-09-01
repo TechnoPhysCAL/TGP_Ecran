@@ -73,7 +73,13 @@ Ecran(int8_t reset_pin)
 Au besoin, on peut préciser le numéro de la broche pour le reset (par défault, -1 ).
 
 ## Méthodes disponibles
+```cpp
+void setSplashVisible(bool value)
+bool getSplashVisible()
+```
+Permet de lire et écrire l'apparition ou non de l'écran de démarrage (splash screen) au moment du lancement de l'écran. Cette méthode doit être appelée AVANT l'appel de la méthode begin(). L'image affichée ne peut pas être changée: il est mise en mémoire par la librairie Adafruit GFX.
 
+--- 
 ```cpp
 void begin()
 void begin(uint8_t switchVCC, uint8_t i2cAddress )
@@ -82,12 +88,11 @@ Doit être appelée dans la fonction setup(). Initialise l'écran, on peut facul
 
 ---
 ```cpp
-void setSplashVisible(bool value)
-bool getSplashVisible()
+ void refresh()
 ```
-Permet de lire et écrire l'apparition ou non de l'écran de démarrage (splash screen) au moment du lancement de l'écran. Cette méthode doit être appelée AVANT l'appel de la méthode begin(). L'image affichée ne peut pas être changée: il est mise en mémoire par la librairie Adafruit GFX.
+Cette méthode doit être placée en début de boucle loop(): elle permet de mettre à jour l'état de l'écran sans bloquer l'exécution du reste de la boucle.
 
---- 
+---
 ```cpp
 void ecrire(char *str)
 void ecrire(char *str, int line)
