@@ -89,10 +89,12 @@ Permet de lire et écrire l'apparition ou non de l'écran de démarrage (splash 
 
 --- 
 ```cpp
+void ecrire(char *str)
+void ecrire(char *str, int line)
 void ecrire(char *str, int line, int textSize)
 
 ```
-Permet d'afficher une chaîne de texte à l'écran, à ligne voulue (indice 0 à 7) et de taille voulue (minimum de 1). Les deux derniers paramètres sont facultatifs.
+Permet d'afficher une chaîne de texte à l'écran, à ligne voulue (par défault 0) et de taille voulue (facteur entier, par défaut 1). Les deux derniers paramètres sont facultatifs.
 
 --- 
 ```cpp
