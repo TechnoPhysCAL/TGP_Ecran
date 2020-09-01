@@ -46,7 +46,7 @@ bool Ecran::getSplashVisible()
 void Ecran::ecrire(char *msg, int line, int textSize)
 {
   setTextSize(textSize);
-  if (line >= 0 && line < 8)
+  if (line >= 0 && line < (SCREEN_HEIGHT / 8))
   {
     writeFromBeginning(msg, line);
   }
