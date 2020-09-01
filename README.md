@@ -78,7 +78,7 @@ Au besoin, on peut préciser le numéro de la broche pour le reset (par défault
 void begin()
 void begin(uint8_t switchVCC, uint8_t i2cAddress )
 ```
-Initialise l'écran, on peut facultativement préciser les valeurs de switchVCC et i2cAddress (voir documentation Adafruit SSD1306).
+Doit être appelée dans la fonction setup(). Initialise l'écran, on peut facultativement préciser les valeurs de switchVCC et i2cAddress (voir documentation Adafruit SSD1306).
 
 ---
 ```cpp
