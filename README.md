@@ -82,10 +82,10 @@ Initialise l'écran, on peut facultativement préciser les valeurs de switchVCC 
 
 ---
 ```cpp
-void setSplashVisible(bool)
+void setSplashVisible(bool value)
 bool getSplashVisible()
 ```
-Permet de lire et écrire l'apparition ou non de l'écran de démarrage (splash screen) au moment du lancement de l'écran. Cette méthode doit être appelée AVANT l'appel de la méthode begin().
+Permet de lire et écrire l'apparition ou non de l'écran de démarrage (splash screen) au moment du lancement de l'écran. Cette méthode doit être appelée AVANT l'appel de la méthode begin(). L'image affichée ne peut pas être changée: il est mise en mémoire par la librairie Adafruit GFX.
 
 --- 
 ```cpp
