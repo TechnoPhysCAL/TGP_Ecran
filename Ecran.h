@@ -18,14 +18,14 @@
 class Ecran : public Adafruit_SSD1306
 {
 public:
-    Ecran();
-    void begin();
+    Ecran(int8_t reset_pin = OLED_RESET );
+    void begin(uint8_t switchVCC = SSD1306_SWITCHCAPVCC, uint8_t i2cAddress = DEFAULT_ADDRESS);
     void refresh();
 
     void setSplashVisible(bool);
     bool getSplashVisible();
 
-    void ecrire(char *str, int textSize = 1);
+    void ecrire(char *str, int line = 0, int textSize = 1);
     void dessinerPixel(int16_t, int16_t);
     void effacer();
 
@@ -36,6 +36,6 @@ private:
     bool _splashVisible;
     bool _changeFlag;
     void flag();
-    void writeFromBeginning(char *str);
+    void writeFromBeginning(char *str,int line);
 };
 #endif

@@ -1,14 +1,14 @@
 #include "Ecran.h"
 
-Ecran::Ecran() : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
+Ecran::Ecran(int8_t reset_pin) : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, reset_pin)
 {
   _splashVisible = false;
   _changeFlag = false;
 }
 
-void Ecran::begin()
+void Ecran::begin(uint8_t switchVCC, uint8_t i2cAddress)
 {
-  if (!Adafruit_SSD1306::begin(SSD1306_SWITCHCAPVCC, DEFAULT_ADDRESS))
+  if (!Adafruit_SSD1306::begin(switchVCC, i2cAddress))
   {
     Serial.println(F("SSD1306 allocation failed"));
   }
@@ -22,6 +22,7 @@ void Ecran::begin()
     // Clear the buffer
     clearDisplay();
     display();
+    setTextColor(WHITE);
   }
 }
 
@@ -42,10 +43,13 @@ bool Ecran::getSplashVisible()
 {
   return _splashVisible;
 }
-void Ecran::ecrire(char *msg, int textSize)
+void Ecran::ecrire(char *msg, int line, int textSize)
 {
   setTextSize(textSize);
-  writeFromBeginning(msg);
+  if (line >= 0 && line < 8)
+  {
+    writeFromBeginning(msg, line);
+  }
 }
 
 void Ecran::dessinerPixel(int16_t x, int16_t y)
@@ -60,12 +64,11 @@ void Ecran::effacer()
   flag();
 }
 
-void Ecran::writeFromBeginning(char *msg)
+void Ecran::writeFromBeginning(char *msg, int line)
 {
   String buffer = msg;
-  clearDisplay();
-  setTextColor(WHITE);
-  setCursor(0, 0);
+  setTextColor(WHITE, BLACK);
+  setCursor(0, 8 * line);
   print(buffer);
   flag();
 }
