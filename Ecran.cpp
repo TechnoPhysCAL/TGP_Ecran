@@ -43,7 +43,16 @@ bool Ecran::getSplashVisible()
 {
   return _splashVisible;
 }
-void Ecran::ecrire(char *msg, int line, int textSize)
+
+void Ecran::ecrire(const char *msg, int line, int textSize)
+{
+  setTextSize(textSize);
+  if (line >= 0 && line < (SCREEN_HEIGHT / 8))
+  {
+    writeFromBeginning(msg, line);
+  }
+}
+void Ecran::ecrire(String msg, int line, int textSize)
 {
   setTextSize(textSize);
   if (line >= 0 && line < (SCREEN_HEIGHT / 8))
@@ -64,7 +73,7 @@ void Ecran::effacer()
   flag();
 }
 
-void Ecran::writeFromBeginning(char *msg, int line)
+void Ecran::writeFromBeginning(const char *msg, int line)
 {
   String buffer = msg;
   setTextColor(WHITE, BLACK);
@@ -72,7 +81,13 @@ void Ecran::writeFromBeginning(char *msg, int line)
   print(buffer);
   flag();
 }
-
+void Ecran::writeFromBeginning(String buffer, int line)
+{
+  setTextColor(WHITE, BLACK);
+  setCursor(0, 8 * line);
+  print(buffer);
+  flag();
+}
 void Ecran::flag()
 {
   _changeFlag = true;

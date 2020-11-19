@@ -25,7 +25,8 @@ public:
     void setSplashVisible(bool);
     bool getSplashVisible();
 
-    void ecrire(char *str, int line = 0, int textSize = 1);
+    void ecrire(const char *str, int line = 0, int textSize = 1);
+    void ecrire(String str, int line = 0, int textSize = 1);
     void dessinerPixel(int16_t, int16_t);
     void effacer();
 
@@ -36,6 +37,7 @@ private:
     bool _splashVisible;
     bool _changeFlag;
     void flag();
-    void writeFromBeginning(char *str,int line);
+    void writeFromBeginning(const char *str,int line);
+    void writeFromBeginning(String str,int line);
 };
 #endif
