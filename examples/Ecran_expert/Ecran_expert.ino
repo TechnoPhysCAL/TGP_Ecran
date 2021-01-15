@@ -1,5 +1,5 @@
 /*
-  Librairie TPG Ecran - Ecran_simple.ino
+  Librairie TPG Ecran - Ecran_expert.ino
 
   ### Démonstration des quelques fonctions avancées pour la classe Ecran.
   Pour plus d'informations, consultez la documentation de la librairie Adafruit GFX : https://learn.adafruit.com/adafruit-gfx-graphics-library

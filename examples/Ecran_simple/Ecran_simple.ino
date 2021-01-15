@@ -42,15 +42,21 @@ void loop()
 
     for (int taille = 1; taille <= 4; taille++) //Boucle de 4 itérations:
     {
-        for (int ligne = 0; ligne < 8; ligne++) //Boucle de 8 itérations:
+        for (int ligne = 0; ligne < 8; ligne = ligne + taille)
         {
-            monEcran.ecrire("TGP Ecran", ligne, taille);
+            monEcran.ecrire("TGP Ecran", ligne, taille); //Ecrire le texte sur une ligne donnée, de la taille donnée.
+            monEcran.display();
+            delay(200);
+        }
+        for (int ligne = 0; ligne < 8; ligne = ligne + taille) //Effacer une ligne donnée, de la taille donnée.
+        {
+            monEcran.effacer(ligne, taille);
             monEcran.display();
             delay(200);
         }
     }
 
-    monEcran.effacer();
+    monEcran.effacer(); //Tout effacer l'écran.
 
     for (int i = 0; i < 500; i++) //Boucle de 500 itérations:
     {

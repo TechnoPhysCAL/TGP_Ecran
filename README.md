@@ -99,7 +99,7 @@ void ecrire(char *str, int line)
 void ecrire(char *str, int line, int textSize)
 
 ```
-Permet d'afficher une chaîne de texte à l'écran, à ligne voulue (par défault 0) et de taille voulue (facteur entier, par défaut 1). Les deux derniers paramètres sont facultatifs.
+Permet d'afficher une chaîne de texte à l'écran, à ligne voulue (0 à 7, par défault 0) et de taille voulue (facteur entier entre 1 et 4, par défaut 1). Les deux derniers paramètres sont facultatifs.
 
 --- 
 ```cpp
@@ -111,9 +111,11 @@ Permet de dessiner un seul pixel à la coordonnée (x,y).
 --- 
 ```cpp
 void effacer()
+void effacer(int line)
+void effacer(int line, int textSize)
 
 ```
-Permet d'effacer l'écran.
+Permet d'effacer l'écran tout l'écran (si aucun paramètre n'est fourni), ou seulement une ligne spécifique (0 à 7, ou -1 pour effacer tout l'écran) et de taille spécifique (facteur entier, par défaut 1).
 
 ---
 
