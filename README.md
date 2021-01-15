@@ -6,6 +6,20 @@ Permet l'utilisation d'un écran OLED, construite sur la librairie [Adafruit SSD
 
 L'écran offre quelques méthodes simplifiées pour afficher du texte à l'écran. Pour davantage de possibilités graphiques, elle expose également les méthodes primitives déjà présentes dans la librairie Adafruit GFX.
 
+## Notes de version
+
+### 1.2.0 : 
+- Les chaînes codées UTF-8 par Arduino sont maintenant décodées: si le caractère Unicode existe dans l'ASCII étendue, il sera correctement affiché;
+- La méthode effacer() permet maintenant d'effacer une seule ligne de taille voulue, à l'image de la méthode écrire();
+- Les exemples ont été modifiées en conséquence.
+
+### 1.1.0 :
+- Support des String et const char* dans la méthode ecrire().
+
+### 1.0.0 :
+- Première version officielle.
+
+
 ## Utilisation
 
 

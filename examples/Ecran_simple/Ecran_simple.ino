@@ -44,7 +44,7 @@ void loop()
     {
         for (int ligne = 0; ligne < 8; ligne = ligne + taille)
         {
-            monEcran.ecrire("TGP Ecran", ligne, taille); //Ecrire le texte sur une ligne donnée, de la taille donnée.
+            monEcran.ecrire("TGP Écran", ligne, taille); //Ecrire le texte sur une ligne donnée, de la taille donnée.
             monEcran.display();
             delay(200);
         }
