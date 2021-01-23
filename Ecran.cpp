@@ -49,7 +49,6 @@ bool Ecran::getSplashVisible()
 
 size_t Ecran::write(uint8_t c)
 {
-  Serial.println(c);
   if (_utf8 > 0)
   {
     _utf8--;
@@ -59,14 +58,12 @@ size_t Ecran::write(uint8_t c)
     }
     if (_utf8 == 0)
     {
-      Serial.println(_unicode);
       return Adafruit_SSD1306::write(mapUnicodeToExtASCII(_unicode));
       _unicode = 0;
     }
   }
   else if (c >> 3 == 30) //4 bits utf-8
   {
-
     _utf8 = 3;
     _unicode = c & 7;
   }

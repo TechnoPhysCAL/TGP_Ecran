@@ -8,6 +8,9 @@ L'écran offre quelques méthodes simplifiées pour afficher du texte à l'écra
 
 ## Notes de version
 
+### 1.2.1 :
+- Retiré des Serial.print() temporaires pour débogage.
+
 ### 1.2.0 : 
 - Les chaînes codées UTF-8 par Arduino sont maintenant décodées: si le caractère Unicode existe dans l'ASCII étendue, il sera correctement affiché;
 - La méthode effacer() permet maintenant d'effacer une seule ligne de taille voulue, à l'image de la méthode écrire();
