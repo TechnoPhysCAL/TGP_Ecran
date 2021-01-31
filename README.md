@@ -8,6 +8,9 @@ L'écran offre quelques méthodes simplifiées pour afficher du texte à l'écra
 
 ## Notes de version
 
+### 1.3.0 :
+- Ajout de setWrapLine(bool) et getWrapLine(), pour permettre le retour automatique à la première ligne lorsque le texte déborde par le bas.
+ 
 ### 1.2.1 :
 - Retiré des Serial.print() temporaires pour débogage.
 
@@ -135,6 +138,11 @@ void effacer(int line, int textSize)
 Permet d'effacer l'écran tout l'écran (si aucun paramètre n'est fourni), ou seulement une ligne spécifique (0 à 7, ou -1 pour effacer tout l'écran) et de taille spécifique (facteur entier, par défaut 1).
 
 ---
+```cpp
+void setWrapLine(bool value)
+bool getWrapLine()
+```
+Permet de lire et écrire le retour (ou le non-retour) automatique à la première ligne lorsque le texte déborde de l'écran par le bas.
 
 ### Remarque
 

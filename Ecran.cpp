@@ -7,6 +7,7 @@ Ecran::Ecran(int8_t reset_pin) : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &
   _utf8 = 0;
   _utf8_error = false;
   _unicode = 0;
+  _wrapLine = false;
 }
 
 void Ecran::begin(uint8_t switchVCC, uint8_t i2cAddress)
@@ -47,6 +48,23 @@ bool Ecran::getSplashVisible()
   return _splashVisible;
 }
 
+void Ecran::setWrapLine(bool value)
+{
+  _wrapLine = value;
+}
+bool Ecran::getWrapLine()
+{
+  return _wrapLine;
+}
+
+void Ecran::wrapLine()
+{
+  if (_wrapLine)
+  {
+    Adafruit_SSD1306::setCursor(Adafruit_SSD1306::getCursorX(), Adafruit_SSD1306::getCursorY() % Adafruit_SSD1306::height());
+  }
+}
+
 size_t Ecran::write(uint8_t c)
 {
   if (_utf8 > 0)
@@ -58,6 +76,8 @@ size_t Ecran::write(uint8_t c)
     }
     if (_utf8 == 0)
     {
+
+      Ecran::wrapLine();
       return Adafruit_SSD1306::write(mapUnicodeToExtASCII(_unicode));
       _unicode = 0;
     }
@@ -80,6 +100,7 @@ size_t Ecran::write(uint8_t c)
   }
   else
   {
+    Ecran::wrapLine();
     return Adafruit_SSD1306::write(c);
   }
   return 1;

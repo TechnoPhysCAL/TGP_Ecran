@@ -17,6 +17,8 @@ effacer	KEYWORD2
 setSplashVisible	KEYWORD2
 getSplashVisible	KEYWORD2
 
+setWrapLine	KEYWORD2
+getWrapLine	KEYWORD2
 ######################################
 # Constants (LITERAL1)
 #######################################
