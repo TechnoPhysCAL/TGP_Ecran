@@ -78,8 +78,9 @@ size_t Ecran::write(uint8_t c)
     {
 
       Ecran::wrapLine();
-      return Adafruit_SSD1306::write(mapUnicodeToExtASCII(_unicode));
+      size_t answer = Adafruit_SSD1306::write(mapUnicodeToExtASCII(_unicode));
       _unicode = 0;
+      return answer;
     }
   }
   else if (c >> 3 == 30) //4 bits utf-8

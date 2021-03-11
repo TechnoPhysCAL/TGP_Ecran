@@ -8,6 +8,9 @@ L'écran offre quelques méthodes simplifiées pour afficher du texte à l'écra
 
 ## Notes de version
 
+### 1.3.1 :
+- correction pour une instruction non rejoignable après un return.
+ 
 ### 1.3.0 :
 - Ajout de setWrapLine(bool) et getWrapLine(), pour permettre le retour automatique à la première ligne lorsque le texte déborde par le bas.
  
@@ -44,7 +47,7 @@ void loop() {
                       //(quand des éléments graphiques ont été modifiées au cours du loop() ).
 
   if(millis() % 1000 < 10){ //Condtition temporelle
-     monEcran.effacer();               //Effacer l'écran
+    monEcran.effacer();               //Effacer l'écran
     
     monEcran.ecrire("Bonjour!");       //Écrire un texte
     monEcran.ecrire("Salut!", 1);      //Écrire un texte sur la 2e ligne
