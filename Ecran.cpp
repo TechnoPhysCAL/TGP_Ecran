@@ -1,6 +1,6 @@
 #include "Ecran.h"
 
-Ecran::Ecran(int8_t reset_pin) : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, reset_pin)
+Ecran::Ecran(int8_t reset_pin, TwoWire *wire, uint8_t i2cAddress) : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, wire, reset_pin)
 {
   _splashVisible = false;
   _changeFlag = false;
@@ -8,13 +8,14 @@ Ecran::Ecran(int8_t reset_pin) : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &
   _utf8_error = false;
   _unicode = 0;
   _wrapLine = false;
+  _i2cAddress = i2cAddress;
 }
 
-void Ecran::begin(uint8_t switchVCC, uint8_t i2cAddress)
+bool Ecran::begin()
 {
-  if (!Adafruit_SSD1306::begin(switchVCC, i2cAddress))
+  if (!Adafruit_SSD1306::begin(SSD1306_SWITCHCAPVCC, _i2cAddress))
   {
-    Serial.println(F("SSD1306 allocation failed"));
+    return false;
   }
   else
   {
@@ -28,6 +29,7 @@ void Ecran::begin(uint8_t switchVCC, uint8_t i2cAddress)
     display();
     setTextColor(WHITE, BLACK);
   }
+  return true;
 }
 
 void Ecran::refresh()
@@ -83,18 +85,18 @@ size_t Ecran::write(uint8_t c)
       return answer;
     }
   }
-  else if (c >> 3 == 30) //4 bits utf-8
+  else if (c >> 3 == 30) // 4 bits utf-8
   {
     _utf8 = 3;
     _unicode = c & 7;
   }
-  else if (c >> 4 == 14) //3 bits utf-8
+  else if (c >> 4 == 14) // 3 bits utf-8
   {
 
     _utf8 = 2;
     _unicode = c & 15;
   }
-  else if (c >> 5 == 6) //2 bits utf-8
+  else if (c >> 5 == 6) // 2 bits utf-8
   {
     _utf8 = 1;
     _unicode = c & 31;
@@ -309,7 +311,7 @@ void Ecran::flag()
   _changeFlag = true;
 }
 
-//Overriden method
+// Overriden method
 void Ecran::endWrite()
 {
   Adafruit_SSD1306::endWrite();
