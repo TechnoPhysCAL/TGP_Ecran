@@ -7,24 +7,14 @@
   Note: Toutes les méthodes primitives de la classe Adafruit_SSD1306 sont disponibles dans la classe Ecran également.
 
 */
-
 #include "Ecran.h"
 
-#define OLED_RESET -1
-#define DEFAULT_ADDRESS 0x3C
-
-Ecran monEcran(OLED_RESET,&Wire,DEFAULT_ADDRESS); //Création de l'objet 'ecran' de classe Ecran.
-
+Ecran monEcran; //Création de l'objet 'ecran' de classe Ecran.
 void setup()
 {
-    Wire.begin(); 
     Serial.begin(115200);
 
-    if(!monEcran.begin()) // Initialiser l'écran.
-    {
-        Serial.println("Echec d'initialisation de l'écran.");
-        while(true){} //on ne continue pas le code
-    }
+    monEcran.begin(); // Initialiser l'écran.
 }
 
 void loop()
