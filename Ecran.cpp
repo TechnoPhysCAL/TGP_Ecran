@@ -1,6 +1,6 @@
 #include "Ecran.h"
 
-Ecran::Ecran(int8_t reset_pin) : Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, reset_pin)
+Ecran::Ecran(uint8_t width, uint8_t height,TwoWire *twoWire,int8_t resetPin) : Adafruit_SSD1306(width, height, twoWire, resetPin)
 {
   _splashVisible = false;
   _changeFlag = false;

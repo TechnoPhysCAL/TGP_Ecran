@@ -7,20 +7,15 @@
 */
 #include "Ecran.h"
 
-//On peut changer les constantes d'initialisation de la classe AdaFruit_SSD1306 via le constructeur et la fonction begin().
-#define PIN_RESET -1 
-#define SWITCHAPVCC SSD1306_SWITCHCAPVCC
-#define I2C_ADRESS 0x3C
 
-
-Ecran monEcran(PIN_RESET); //Création de l'objet 'ecran' de classe Ecran.
+Ecran monEcran(128, 64, &Wire, -1 ); //Création de l'objet 'ecran' de classe Ecran avec les paramètres pour Adadruit_SSD1306.
 
 unsigned long next_event;
 
 void setup()
 {
     monEcran.setSplashVisible(true); //Affichera l'écran de démarrage (splash screen) pendant 2 secondes.
-    monEcran.begin(SWITCHAPVCC,I2C_ADRESS);                // Initialiser l'écran.
+    monEcran.begin(0x02,0x3c);                // Initialiser l'écran en avec les paramètres pour Adadruit_SSD1306.
     next_event = 0;
 }
 
