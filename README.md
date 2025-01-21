@@ -8,6 +8,10 @@ L'écran offre quelques méthodes simplifiées pour afficher du texte à l'écra
 
 ## Notes de version
 
+### 2.0.0 : 
+ - Numéro de version en phase avec le reste des librairies TGP
+ - Meilleur commentaires dans les exemples
+
 ### 1.3.1 :
 - correction pour une instruction non rejoignable après un return.
  

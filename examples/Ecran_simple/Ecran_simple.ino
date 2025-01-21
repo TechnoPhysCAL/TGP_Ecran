@@ -1,9 +1,9 @@
 /*
   Librairie TPG Ecran - Ecran_simple.ino
 
-  ### Démonstration des quelques fonctions simplifiée pour la classe Ecran.
-
-
+  ### DESCRIPTION
+  Démonstration des quelques fonctions simplifiée pour la classe Ecran.
+  
   Note: Toutes les méthodes primitives de la classe Adafruit_SSD1306 sont disponibles dans la classe Ecran également.
 
 */
