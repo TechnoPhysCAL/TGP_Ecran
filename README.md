@@ -1,4 +1,4 @@
-# Librairie TGP
+# Librairie TGP Ecran
 
 Permet l'utilisation d'un écran OLED, construite sur la librairie [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306).
 
